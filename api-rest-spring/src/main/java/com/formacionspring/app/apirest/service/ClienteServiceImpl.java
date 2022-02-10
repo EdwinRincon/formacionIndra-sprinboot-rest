@@ -38,6 +38,9 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	public Cliente putCliente(Cliente cliente, long id) {
 		Cliente toUpdateCliente = getCliente(id);
+		
+		if (toUpdateCliente==null) return null;
+		
 		toUpdateCliente.setNombre(cliente.getNombre());
 		toUpdateCliente.setApellido(cliente.getApellido());
 		toUpdateCliente.setEmail(cliente.getEmail());

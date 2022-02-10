@@ -3,6 +3,7 @@ package com.formacionspring.app.apirest.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,14 +23,20 @@ public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	@Column(nullable = false)
 	private String nombre;
+	@Column(nullable = false)
 	private String apellido;
+	@Column(nullable = false, unique = true)
 	private String email;
+	@Column(nullable = false)
 	private String telefono;
+	private String img;
 	
+
 	@Temporal(TemporalType.DATE)
 	private Date createdAt;
-	
+		
 
 	@PrePersist
 	public void prePersist() {
@@ -67,6 +74,14 @@ public class Cliente implements Serializable {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+	
 	
 		
 }
